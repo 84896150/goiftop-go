@@ -26,22 +26,23 @@ jobs:
         uses: actions/setup-go@v5
         with:
           go-version: '1.23'
-          
-      - run: |
-          # On Ubuntu
-          git clone --depth=1 https://github.com/fs714/goiftop.git
-          # cp -f `which go` /usr/bin/go
-          ls
-      - name: Make All
+
+
+      - name: 安装依赖库
         run: |
-          cd goiftop
-          go mod tidy
-          chmod u+x package.sh
-          ./package.sh
-          ls -x
-          # tar -czvf myetc.tar.gz release
-          # mkdir -p /opt/images
-          # sudo mv -f /home/runner/work/Frp-build/Frp-build/frp/release/* /opt/images/
+          sudo apt-get update
+          sudo apt-get install -y linux-libc-dev libpcap-dev libnetfilter-queue-dev libnetfilter-log-dev
+          
+      - name: 克隆 goiftop 仓库
+        run: |
+          git clone --depth=1 https://github.com/fs714/goiftop.git
+          ls -l
+          
+      - name: 编译项目
+        run: |
+          make
+          ls -l
+
       - name : Upload packages
         uses: actions/upload-artifact@master
         if: always()
