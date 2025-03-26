@@ -43,6 +43,7 @@ jobs:
           cd goiftop
           make
           ls -l
+          pwd
 
       - name : Upload packages
         uses: actions/upload-artifact@master
