@@ -35,7 +35,7 @@ jobs:
           
       - name: 克隆 goiftop 仓库
         run: |
-          git clone --depth=1 https://github.com/fs714/goiftop.git
+          git clone --depth=1 https://github.com/84896150/goiftop.git
           ls -l
           
       - name: 编译项目
@@ -49,5 +49,5 @@ jobs:
         if: always()
         with:
           name: Frp-packages
-          path: /home/runner/work/Frp-build/Frp-build/frp/release/
+          path: /home/runner/work/goiftop/goiftop/bin/
       
