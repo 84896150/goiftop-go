@@ -1,4 +1,4 @@
-name: Build Frp
+name: Build goiftop
 
 on: 
   release:
@@ -29,14 +29,12 @@ jobs:
           
       - run: |
           # On Ubuntu
-          sudo apt-get install linux-libc-dev libpcap-dev libnetfilter-queue-dev libnetfilter-log-dev
-          # https://github.com/actions/setup-go/issues/107
           git clone --depth=1 https://github.com/fs714/goiftop.git
           # cp -f `which go` /usr/bin/go
           ls
       - name: Make All
         run: |
-          cd frp
+          cd goiftop
           go mod tidy
           chmod u+x package.sh
           ./package.sh
