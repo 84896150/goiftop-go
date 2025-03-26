@@ -28,8 +28,10 @@ jobs:
           go-version: '1.23'
           
       - run: |
+          # On Ubuntu
+          sudo apt-get install linux-libc-dev libpcap-dev libnetfilter-queue-dev libnetfilter-log-dev
           # https://github.com/actions/setup-go/issues/107
-          git clone --depth=1 https://github.com/84896150/frp.git
+          git clone --depth=1 https://github.com/fs714/goiftop.git
           # cp -f `which go` /usr/bin/go
           ls
       - name: Make All
