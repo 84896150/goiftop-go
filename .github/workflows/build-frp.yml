@@ -41,7 +41,7 @@ jobs:
       - name: 编译项目
         run: |
           cd goiftop
-          make
+          make build-armv7
           ls -l
           pwd
 
